@@ -1,0 +1,40 @@
+.button {
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 0;
+  line-height: 150%;
+}
+
+.button.withIcon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button.primary {
+  color: var(--neutral-white);
+  background: var(--brand-colors-blue-100);
+}
+
+.button.secondary {
+  background: var(--gray-100);
+  color: var(--gray-900);
+}
+
+.button.destructive {
+  color: var(--neutral-white);
+  background: var(--states-error-100);
+}
+
+.button.ghost {
+  border-radius: 0px;
+  padding: 0px;
+}

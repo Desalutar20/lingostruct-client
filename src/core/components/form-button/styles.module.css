@@ -1,0 +1,6 @@
+.loading {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  column-gap: 4px;
+}

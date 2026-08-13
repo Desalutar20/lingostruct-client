@@ -1,0 +1,31 @@
+import type { ComponentProps } from "react";
+import { useFormContext } from "@/core/lib/tanstack-form";
+import { AppButton } from "@/core/components/app-button/app-button";
+import { Spinner } from "@/core/components/spinner/spinner";
+import styles from "./styles.module.css";
+
+type Props = {
+  variant?: "primary" | "secondary" | "destructive" | "ghost";
+} & ComponentProps<"button">;
+
+export const FormButton = (props: Props) => {
+  const form = useFormContext();
+
+  return (
+    <form.Subscribe
+      selector={(state) => [state.canSubmit, state.isSubmitting, state.isPristine]}
+      children={([canSubmit, isSubmitting, isPristine]) => (
+        <AppButton {...props} disabled={!canSubmit || isPristine}>
+          {isSubmitting ? (
+            <span className={styles.loading}>
+              <span>Loading...</span>
+              <Spinner size="small" />
+            </span>
+          ) : (
+            (props.children ?? "Submit")
+          )}
+        </AppButton>
+      )}
+    />
+  );
+};

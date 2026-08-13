@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+
+  span:first-child {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 143%;
+    color: var(--gray-900);
+  }
+}
+
+.error {
+  color: var(--states-error-100);
+  padding-left: 6px;
+}
