@@ -1,0 +1,14 @@
+.link {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--gray-400);
+  transition: transform 0.3s ease;
+}
+
+.link:hover {
+  transform: translateY(-3px);
+}

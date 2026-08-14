@@ -28,8 +28,5 @@ export const resetPassword = async (data: Omit<ResetPasswordInput, "newPasswordC
     .post<ApiSuccessResponse<string>>(API_ENDPOINTS.auth.resetPassword, { json: data })
     .json();
 
-export const getProfile = async () =>
-  await http.get<ApiSuccessResponse<User>>(API_ENDPOINTS.auth.getProfile).json();
-
 export const logout = async () =>
   await http.post<ApiSuccessResponse<string>>(API_ENDPOINTS.auth.logout).json();

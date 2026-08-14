@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import classNames from "classnames";
 
 type Props = {
-  size?: "small" | "medium" | "large";
+  size?: "small" | "medium" | "large" | "xlarge";
 } & ComponentProps<"span">;
 
 export const Spinner = ({ size = "medium", className, ...props }: Props) => {

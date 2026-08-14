@@ -37,4 +37,7 @@
 .button.ghost {
   border-radius: 0px;
   padding: 0px;
+  background-color: transparent;
+  font-size: 14px;
+  color: var(--gray-400);
 }

@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 24px;
+}
+
+.divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 16px;
+  color: #737373;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #e5e5e5;
+}
+
+.divider span {
+  white-space: nowrap;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+
+  background: var(--gray-50);
+
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease,
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.button:hover {
+  border-color: var(--gray-300);
+  background: var(--neutral-100);
+  box-shadow: 0 4px 12px rgb(32 47 61 / 8%);
+}
+
+.button:active {
+  transform: scale(0.97);
+  box-shadow: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--brand-colors-blue-100);
+  outline-offset: 2px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .socials {
+    column-gap: 24px;
+  }
+
+  .button {
+    width: 56px;
+    height: 56px;
+
+    border-radius: 14px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+}

@@ -4,6 +4,20 @@
   row-gap: 32px;
 }
 
+.icon {
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  background: var(--states-success-10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    color: var(--states-success-100);
+  }
+}
+
 .titleContainer {
   display: flex;
   flex-direction: column;
@@ -33,22 +47,6 @@
   width: 100%;
 }
 
-.navigate {
-  display: flex;
-  align-items: center;
-  column-gap: 4px;
-  font-size: 14px;
-  line-height: 143%;
-  max-width: 100%;
+.login {
   margin: 0 auto;
-
-  span {
-    color: #667085;
-  }
-
-  a {
-    font-weight: 500;
-    text-align: right;
-    color: var(--brand-colors-orange-brand-100);
-  }
 }

@@ -1,6 +1,6 @@
 .spinner {
   display: inline-block;
-  border: 2px solid currentColor;
+  border: 2px solid var(--brand-colors-blue-200);
   border-right-color: transparent;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
@@ -13,13 +13,18 @@
 }
 
 .medium {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
 }
 
 .large {
-  width: 32px;
-  height: 32px;
+  width: 80px;
+  height: 80px;
+}
+
+.xlarge {
+  width: 120px;
+  height: 120px;
 }
 
 @keyframes spin {

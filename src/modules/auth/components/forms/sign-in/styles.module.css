@@ -28,6 +28,13 @@
   row-gap: 20px;
 }
 
+.forgotPassword {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand-colors-orange-brand-100);
+}
+
 .button {
   max-width: 100%;
   width: 100%;

@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  font-size: 14px;
+  line-height: 143%;
+  max-width: 100%;
+  margin: 0 auto;
+
+  span {
+    color: #667085;
+  }
+
+  a,
+  button {
+    font-weight: 500;
+    text-align: right;
+    color: var(--brand-colors-orange-brand-100) !important;
+  }
+}

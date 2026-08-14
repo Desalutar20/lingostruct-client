@@ -1,15 +1,20 @@
 import type { ApiSuccessResponse } from "@/core/lib/api";
 import { useAppForm } from "@/core/lib/tanstack-form";
 import type { MutationOptions } from "@/core/types/tanstack.types";
-import { signUp } from "@/modules/auth/api/auth.api";
-import { signUpSchema, type SignUpInput } from "@/modules/auth/schemas/sign-up.schema";
+import { resetPassword } from "@/modules/auth/api/auth.api";
+import {
+  resetPasswordSchema,
+  type ResetPasswordInput,
+} from "@/modules/auth/schemas/reset-password.schema";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-export const useSignUp = (options?: MutationOptions<ApiSuccessResponse<string>, SignUpInput>) => {
+export const useResetPassword = (
+  options?: MutationOptions<ApiSuccessResponse<string>, ResetPasswordInput>,
+) => {
   const { mutateAsync, ...rest } = useMutation({
     ...options,
-    mutationFn: (data: SignUpInput) => signUp(data),
+    mutationFn: ({ newPasswordConfirm: _, ...rest }: ResetPasswordInput) => resetPassword(rest),
     onSuccess: (data, params, result, ctx) => {
       toast.success(data.data);
       options?.onSuccess?.(data, params, result, ctx);
@@ -23,16 +28,13 @@ export const useSignUp = (options?: MutationOptions<ApiSuccessResponse<string>, 
   const form = useAppForm({
     defaultValues: {
       email: "",
-      password: "",
-      firstName: "",
-      lastName: "",
-    } satisfies SignUpInput,
-    onSubmit: async ({ value }) => {
-      await mutateAsync(value);
-      form.reset();
-    },
+      token: "",
+      newPassword: "",
+      newPasswordConfirm: "",
+    } satisfies ResetPasswordInput,
+    onSubmit: async ({ value }) => await mutateAsync(value),
     validators: {
-      onChange: signUpSchema,
+      onChange: resetPasswordSchema,
     },
   });
 

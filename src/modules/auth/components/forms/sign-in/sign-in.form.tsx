@@ -1,10 +1,23 @@
+import { Link, useRouter } from "@tanstack/react-router";
 import styles from "./styles.module.css";
-import { useSignUp } from "@/modules/auth/hooks/use-sign-up";
 import { AuthNavigation } from "@/modules/auth/components/auth-navigation/auth-navigation";
+import { useSignIn } from "@/modules/auth/hooks/use-sign-in";
+import { ROUTES } from "@/core/const/routes.const";
 import { SocialLogin } from "@/modules/auth/components/social-login/social-login";
 
-export const SignUpForm = () => {
-  const { form, isPending } = useSignUp();
+type Props = {
+  redirectPath?: string;
+};
+
+export const SignInForm = ({ redirectPath }: Props) => {
+  const router = useRouter();
+  const { form, isPending } = useSignIn({
+    onSuccess({ data }) {
+      router.navigate({
+        to: redirectPath ?? (data.role === "admin" ? "/admin" : ROUTES.auth.signUp.href),
+      });
+    },
+  });
 
   return (
     <form
@@ -16,8 +29,8 @@ export const SignUpForm = () => {
     >
       <fieldset disabled={isPending} className={styles.fieldSet}>
         <div className={styles.titleContainer}>
-          <h2>Register</h2>
-          <p>What are we working on today?</p>
+          <h2>Login</h2>
+          <p>Let's build together!</p>
         </div>
 
         <div className={styles.inputContainer}>
@@ -40,32 +53,16 @@ export const SignUpForm = () => {
             )}
           />
 
-          <form.AppField
-            name="firstName"
-            children={(field) => (
-              <field.FormInput type="text" placeholder="Enter name" label="Name" required />
-            )}
-          />
-
-          <form.AppField
-            name="lastName"
-            children={(field) => (
-              <field.FormInput
-                type="text"
-                placeholder="Enter last name"
-                label="Last Name"
-                required
-              />
-            )}
-          />
+          <Link to={ROUTES.auth.forgotPassword.href} className={styles.forgotPassword}>
+            Forgot password?
+          </Link>
         </div>
         <form.AppForm>
-          <form.FormButton className={styles.button}>Register</form.FormButton>
+          <form.FormButton className={styles.button}>Login</form.FormButton>
         </form.AppForm>
+        <SocialLogin redirectPath={redirectPath} />
 
-        <SocialLogin />
-
-        <AuthNavigation type="register" />
+        <AuthNavigation type="login" />
       </fieldset>
     </form>
   );
