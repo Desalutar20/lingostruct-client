@@ -68,7 +68,9 @@ export const ResetPasswordForm = ({ data }: Props) => {
               />
             </div>
             <form.AppForm>
-              <form.FormButton className={styles.button}>Reset password</form.FormButton>
+              <form.FormButton withSpinner={true} className={styles.button}>
+                Reset password
+              </form.FormButton>
             </form.AppForm>
           </>
         )}

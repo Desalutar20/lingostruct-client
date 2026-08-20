@@ -33,7 +33,7 @@
   background: var(--gray-900);
 
   background:
-    url("../../assets/img/layout-bg.png") no-repeat calc(100% + 400px) bottom,
+    url("../assets/img/layout-bg.png") no-repeat calc(100% + 400px) bottom,
     var(--gray-900);
   padding: 172px 160px 172px 124px;
   overflow: hidden;

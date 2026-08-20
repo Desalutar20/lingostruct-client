@@ -1,0 +1,27 @@
+.dialog {
+  width: 652px !important;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+
+  span {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 156%;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 143%;
+    color: var(--gray-400);
+  }
+}

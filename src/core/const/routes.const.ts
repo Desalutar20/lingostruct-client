@@ -21,4 +21,10 @@ export const ROUTES = {
       path: "reset-password",
     },
   },
+  workspaces: {
+    root: {
+      href: "/workspaces",
+      path: "workspaces",
+    },
+  },
 } as const;

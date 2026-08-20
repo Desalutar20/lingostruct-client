@@ -9,5 +9,9 @@ export const API_ENDPOINTS = {
   },
   users: {
     me: "/users/me",
+    updateProfile: "/users/me",
+  },
+  files: {
+    getPresignedUrl: "/files/presigned-url",
   },
 } as const;

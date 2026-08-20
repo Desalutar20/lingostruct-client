@@ -1,0 +1,12 @@
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 40px;
+  background-color: var(--gray-900);
+  padding-left: 40px;
+
+  .logo {
+    color: var(--neutral-white) !important;
+  }
+}

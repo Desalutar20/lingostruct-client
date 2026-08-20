@@ -9,13 +9,13 @@ import {
   signUpRoute,
   verifyAccountRoute,
 } from "@/modules/auth/auth.routes";
-import { createRootRouteWithContext, createRouter, Outlet } from "@tanstack/react-router";
+import { protectedLayout } from "@/modules/shared/layouts/protected.layout";
+import { workspacesRoute } from "../../modules/workspaces/workspaces.routes";
+import { createRootRouteWithContext, createRouter } from "@tanstack/react-router";
 
 export const rootRoute = createRootRouteWithContext<{
   user: Nullable<User>;
-}>()({
-  component: () => <Outlet />,
-});
+}>()();
 
 const routeTree = rootRoute.addChildren([
   authRoute.addChildren([
@@ -25,7 +25,7 @@ const routeTree = rootRoute.addChildren([
     forgotPasswordRoute,
     resetPasswordRoute,
   ]),
-  adminRoute,
+  protectedLayout.addChildren([adminRoute, workspacesRoute]),
 ]);
 
 export const router = createRouter({

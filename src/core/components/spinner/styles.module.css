@@ -1,7 +1,7 @@
 .spinner {
   display: inline-block;
-  border: 2px solid var(--brand-colors-blue-200);
-  border-right-color: transparent;
+  border: 2px solid var(--neutral-white);
+  border-right-color: var(--brand-colors-blue-200);
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
   flex-shrink: 0;

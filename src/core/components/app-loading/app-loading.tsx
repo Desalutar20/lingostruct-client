@@ -1,5 +1,4 @@
 import { Spinner } from "@/core/components/spinner/spinner";
-import { Logo } from "@/core/components/logo/logo";
 
 import styles from "./styles.module.css";
 
@@ -10,7 +9,9 @@ export const AppLoading = () => {
         <div className={styles.left}>
           <div className={styles.leftContainer}>
             <div className={styles.logoContainer}>
-              <Logo />
+              <svg width={76} height={20}>
+                <use href={`/sprites.svg#logo`}></use>
+              </svg>
               <span>4.0</span>
             </div>
 

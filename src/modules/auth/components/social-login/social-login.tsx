@@ -28,16 +28,26 @@ export const SocialLogin = ({ className, redirectPath }: Props) => {
         <span>or continue with</span>
       </div>
       <div className={styles.socials}>
-        {providers.map(({ href, provider, label }) => (
-          <form key={provider} action={`${config.apiUrl}${config.apiPrefix}/auth/${provider}`}>
-            {redirectPath && <input type="hidden" name="redirectPath" value={redirectPath} />}
-            <AppButton className={styles.button} aria-label={label} variant="ghost">
+        {providers.map(({ href, provider, label }) => {
+          const url = new URL(`${config.apiPrefix}/auth/${provider}`, config.apiUrl);
+
+          if (redirectPath) {
+            url.searchParams.set("redirectPath", redirectPath);
+          }
+
+          return (
+            <a
+              key={provider}
+              href={`${config.apiUrl}${config.apiPrefix}/auth/${provider}`}
+              aria-label={label}
+              className={styles.button}
+            >
               <svg className={styles.icon}>
                 <use href={href}></use>
               </svg>
-            </AppButton>
-          </form>
-        ))}
+            </a>
+          );
+        })}
       </div>
     </div>
   );

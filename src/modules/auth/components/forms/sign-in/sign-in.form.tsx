@@ -14,7 +14,7 @@ export const SignInForm = ({ redirectPath }: Props) => {
   const { form, isPending } = useSignIn({
     onSuccess({ data }) {
       router.navigate({
-        to: redirectPath ?? (data.role === "admin" ? "/admin" : ROUTES.auth.signUp.href),
+        to: redirectPath ?? (data.role === "admin" ? "/admin" : ROUTES.workspaces.root.href),
       });
     },
   });
@@ -58,7 +58,9 @@ export const SignInForm = ({ redirectPath }: Props) => {
           </Link>
         </div>
         <form.AppForm>
-          <form.FormButton className={styles.button}>Login</form.FormButton>
+          <form.FormButton withSpinner={true} className={styles.button}>
+            Login
+          </form.FormButton>
         </form.AppForm>
         <SocialLogin redirectPath={redirectPath} />
 

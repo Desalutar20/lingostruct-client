@@ -60,7 +60,9 @@ export const SignUpForm = () => {
           />
         </div>
         <form.AppForm>
-          <form.FormButton className={styles.button}>Register</form.FormButton>
+          <form.FormButton withSpinner={true} className={styles.button}>
+            Register
+          </form.FormButton>
         </form.AppForm>
 
         <SocialLogin />

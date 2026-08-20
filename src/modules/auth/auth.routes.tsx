@@ -1,4 +1,4 @@
-import { createRoute, getRouteApi, redirect } from "@tanstack/react-router";
+import { createRoute, redirect } from "@tanstack/react-router";
 import { AuthLayout } from "./layouts/auth.layout";
 import { rootRoute } from "@/core/lib/tanstack-router";
 import { verifyAccountSchema } from "@/modules/auth/schemas/verify-account.schema";
@@ -15,7 +15,7 @@ export const authRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "auth",
   beforeLoad: ({ context }) => {
-    if (context.user && location.pathname !== ROUTES.auth.resetPassword.path) {
+    if (context.user && location.pathname !== ROUTES.auth.resetPassword.href) {
       throw redirect({ to: "/" });
     }
   },

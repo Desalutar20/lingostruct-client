@@ -23,7 +23,7 @@ export const FormInput = ({ label, className, ...rest }: Props) => {
             : "success"
       }
       className={classNames(styles.input, className)}
-      value={field.state.value}
+      value={rest.value ?? field.state.value}
       onChange={(e) => field.handleChange(e.target.value)}
     />
   );

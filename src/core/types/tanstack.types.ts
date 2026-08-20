@@ -1,7 +1,7 @@
 import type {
   DefaultError,
   MutationOptions as MO,
-  QueryOptions as QO,
+  UseQueryOptions as QO,
 } from "@tanstack/react-query";
 
 export type MutationOptions<

@@ -1,5 +1,6 @@
 .logo {
   width: 76px;
   height: 20px;
-  fill: var(--gray-900);
+  color: var(--gray-900);
+  cursor: pointer;
 }

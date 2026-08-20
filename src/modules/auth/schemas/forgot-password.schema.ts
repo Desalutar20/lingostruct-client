@@ -1,12 +1,14 @@
-import { z } from 'zod'
-import { EMAIL_MAX_LENGTH } from '@/modules/auth/const/auth-schemas.const.ts'
+import { z } from "zod";
+import { EMAIL_MAX_LENGTH } from "@/modules/auth/const/auth-schemas.const.ts";
 
-export const forgotPasswordSchema = z.object({
-  email: z
-    .email()
-    .trim()
-    .nonempty()
-    .max(EMAIL_MAX_LENGTH, `Email must be at most ${EMAIL_MAX_LENGTH} characters`),
-})
+export const forgotPasswordSchema = z
+  .object({
+    email: z
+      .email()
+      .trim()
+      .nonempty()
+      .max(EMAIL_MAX_LENGTH, `Email must be at most ${EMAIL_MAX_LENGTH} characters`),
+  })
+  .strict();
 
-export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>
+export type ForgotPasswordInput = z.input<typeof forgotPasswordSchema>;

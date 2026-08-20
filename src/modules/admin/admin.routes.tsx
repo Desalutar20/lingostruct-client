@@ -1,23 +1,8 @@
-import { ROUTES } from "@/core/const/routes.const";
-import { rootRoute } from "@/core/lib/tanstack-router";
-import { createRoute, redirect } from "@tanstack/react-router";
+import { protectedLayout } from "@/modules/shared/layouts/protected.layout";
+import { createRoute } from "@tanstack/react-router";
 
 export const adminRoute = createRoute({
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => protectedLayout,
   path: "admin",
-  beforeLoad: ({ context }) => {
-    if (!context.user) {
-      throw redirect({
-        to: ROUTES.auth.signIn.href,
-        search: {
-          redirectPath: location.href,
-        },
-      });
-    }
-
-    if (context.user.role === "regular") {
-      throw redirect({ to: "/" });
-    }
-  },
   component: () => <>Admin</>,
 });
