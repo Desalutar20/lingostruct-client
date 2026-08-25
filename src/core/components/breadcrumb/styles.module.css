@@ -1,0 +1,36 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.link,
+.label {
+  color: var(--gray-500);
+  text-decoration: none;
+
+  transition: color 150ms ease;
+}
+
+.link:hover {
+  color: var(--gray-900);
+}
+
+.separator {
+  color: var(--gray-300);
+  user-select: none;
+}
+
+.item:last-child .label {
+  color: var(--gray-900);
+  font-weight: 500;
+}

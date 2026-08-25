@@ -3,9 +3,12 @@ import styles from "./styles.module.css";
 import type { User } from "@/core/types/api/shared/user.type";
 import { Avatar } from "@/core/components/avatar/avatar";
 import { Popover } from "@/core/components/popover/popover";
-import { Ellipsis, LogOut, Settings } from "lucide-react";
+import { Ellipsis, LogOut, MonitorCog, Settings } from "lucide-react";
 import { AppButton } from "@/core/components/app-button/app-button";
 import { UpdateProfileDialog } from "@/modules/users/components/update-profile-dialog/update-profile-dialog";
+import { useLogout } from "@/modules/auth/hooks/use-logout";
+import { Link } from "@tanstack/react-router";
+import { ROUTES } from "@/core/const/routes.const";
 
 type Props = {
   className?: string;
@@ -13,6 +16,7 @@ type Props = {
 };
 
 export const UserProfile = ({ className, user }: Props) => {
+  const { mutate, isPending } = useLogout();
   return (
     <Popover
       sideOffset={-5}
@@ -36,7 +40,7 @@ export const UserProfile = ({ className, user }: Props) => {
           </AppButton>
         </div>
       )}
-      renderContent={(close) => (
+      renderContent={() => (
         <div className={styles.content}>
           <div className={styles.info}>
             <Avatar
@@ -66,8 +70,15 @@ export const UserProfile = ({ className, user }: Props) => {
               }
             />
 
+            {user.role === "admin" && (
+              <Link to={ROUTES.admin.users.href} disabled={isPending} className={styles.action}>
+                <MonitorCog size={20} />
+                Dashboard
+              </Link>
+            )}
             <AppButton
-              onClick={close}
+              disabled={isPending}
+              onClick={() => mutate()}
               variant="ghost"
               className={styles.action}
               icon={<LogOut size={20} />}

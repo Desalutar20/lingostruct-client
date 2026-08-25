@@ -1,0 +1,151 @@
+.container {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 48px;
+  border: 1px solid var(--gray-200);
+  border-radius: 24px;
+  background: var(--neutral-white);
+  box-shadow:
+    0 20px 50px rgba(32, 47, 61, 0.06),
+    0 4px 12px rgba(32, 47, 61, 0.04);
+  text-align: center;
+}
+
+.iconWrapper {
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  border-radius: 24px;
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+}
+
+.warning {
+  background: var(--states-warning-10);
+  color: var(--states-warning-100);
+}
+
+.error {
+  background: var(--states-error-10);
+  color: var(--states-error-100);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  margin-bottom: 8px;
+  color: var(--gray-400);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--gray-900);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.description {
+  max-width: 440px;
+  margin: 14px 0 0;
+  color: var(--gray-400);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.button {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 32px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--brand-colors-blue-100);
+  color: var(--neutral-white);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.button:hover {
+  background: var(--brand-colors-blue-200);
+  box-shadow: 0 6px 16px rgba(0, 112, 255, 0.18);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--brand-colors-blue-20);
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  .card {
+    padding: 40px 24px;
+    border-radius: 20px;
+  }
+
+  .iconWrapper {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 24px;
+    border-radius: 20px;
+  }
+
+  .icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}

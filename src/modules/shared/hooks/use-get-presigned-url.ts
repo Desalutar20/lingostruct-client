@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const useGetPresignedUrl = (
   data: GetPresignedUrlInput,
-  options?: QueryOptions<ApiSuccessResponse<string>>,
+  options?: QueryOptions<ApiSuccessResponse<{ uploadUrl: string; publicUrl: string }>>,
 ) =>
   useQuery({
     ...options,

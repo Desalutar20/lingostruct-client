@@ -1,13 +1,9 @@
 import { z } from "zod";
-import { EMAIL_MAX_LENGTH } from "@/modules/auth/const/auth-schemas.const.ts";
+import { emailSchema } from "@/modules/shared/schemas/common.schema";
 
 export const forgotPasswordSchema = z
   .object({
-    email: z
-      .email()
-      .trim()
-      .nonempty()
-      .max(EMAIL_MAX_LENGTH, `Email must be at most ${EMAIL_MAX_LENGTH} characters`),
+    email: emailSchema,
   })
   .strict();
 

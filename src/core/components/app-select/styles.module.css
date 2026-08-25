@@ -1,0 +1,124 @@
+.label {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  color: var(--gray-700);
+}
+
+.trigger {
+  width: 100%;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--gray-900);
+  border-radius: 8px;
+  background: transparent;
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 150%;
+  color: var(--gray-900);
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease;
+}
+
+.trigger:hover {
+  background: var(--gray-100);
+}
+
+.trigger:focus {
+  outline: none;
+  background: var(--gray-100);
+  border-color: var(--gray-900);
+}
+
+.trigger[data-disabled] {
+  cursor: not-allowed;
+  color: var(--gray-400);
+  background: var(--gray-100);
+  border-color: transparent;
+  opacity: 0.6;
+}
+
+.value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value[data-placeholder] {
+  color: var(--gray-400);
+}
+
+.icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+
+  color: var(--gray-700);
+
+  transition: transform 150ms ease;
+}
+
+.trigger[data-popup-open] .icon {
+  transform: rotate(180deg);
+}
+
+.positioner {
+  z-index: 1000;
+}
+
+.popup {
+  width: var(--anchor-width);
+  min-width: 180px;
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  background: var(--gray-100);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.list {
+  padding: 4px;
+  outline: none;
+}
+
+.item {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--gray-900);
+  cursor: pointer;
+  outline: none;
+}
+
+.item[data-highlighted] {
+  background: var(--gray-200);
+}
+
+.item[data-selected] {
+  color: var(--brand-colors-orange-brand-100);
+}
+
+.itemIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

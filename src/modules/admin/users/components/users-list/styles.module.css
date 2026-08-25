@@ -1,0 +1,162 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 350px));
+  justify-content: center;
+  gap: 24px;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  background: var(--neutral-white);
+  box-shadow: 0 2px 8px rgba(32, 47, 61, 0.04);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.identity {
+  min-width: 0;
+}
+
+.name {
+  overflow: hidden;
+  color: var(--gray-900);
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email {
+  max-width: 220px;
+  margin-top: 4px;
+  overflow: hidden;
+  color: var(--gray-400);
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.role {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--brand-colors-blue-20);
+  color: var(--brand-colors-blue-200);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.statusItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--gray-50);
+}
+
+.statusItem > span {
+  color: var(--gray-400);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.statusItem > strong {
+  color: var(--gray-900);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.statusValue {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+}
+
+.statusValue strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.statusSuccess {
+  color: var(--states-success-100);
+}
+
+.statusError {
+  color: var(--states-error-100);
+}
+
+.providers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--gray-100);
+}
+
+.providersLabel {
+  color: var(--gray-400);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.providerList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.provider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--gray-50);
+  color: var(--gray-900);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.providerDisabled {
+  color: var(--gray-400);
+  opacity: 0.7;
+}
+
+.providerIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}

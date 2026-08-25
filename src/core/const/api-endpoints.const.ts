@@ -14,4 +14,9 @@ export const API_ENDPOINTS = {
   files: {
     getPresignedUrl: "/files/presigned-url",
   },
+  admin: {
+    users: {
+      getUsers: "/admin/users",
+    },
+  },
 } as const;

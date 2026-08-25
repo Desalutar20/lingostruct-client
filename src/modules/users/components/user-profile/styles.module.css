@@ -91,15 +91,30 @@
 .actions {
   display: flex;
   flex-direction: column;
-  row-gap: 12px;
   padding: 0px 16px 18px 16px;
 
   .action {
+    padding: 8px 10px !important;
+    border-radius: 8px !important;
     flex-direction: row-reverse;
-    justify-content: start;
     column-gap: 12px;
     font-size: 14px;
     line-height: 143%;
-    color: var(--gray-900);
+    color: var(--gray-900) !important;
+
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
+
+    &:hover {
+      background: var(--gray-100);
+      color: var(--brand-colors-orange-brand-100) !important;
+    }
+  }
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row !important;
   }
 }

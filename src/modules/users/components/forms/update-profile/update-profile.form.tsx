@@ -121,15 +121,16 @@ const Btns = ({
 }) => {
   const firstName = useSelector(form.store, (state) => state.values.firstName);
   const lastName = useSelector(form.store, (state) => state.values.lastName);
-  const avatarId = useSelector(form.store, (state) => state.values.avatarId);
+  const avatarUrl = useSelector(form.store, (state) => state.values.avatarUrl);
 
-  const textFieldsUnchanged = areEqualByKeys(user, { firstName, lastName }, [
+  const textFieldsUnchanged = areEqualByKeys(user, { firstName, lastName, avatarUrl }, [
     "firstName",
     "lastName",
+    "avatarUrl",
   ]);
-  const hasAvatarChanges = avatarId !== undefined;
+  // const hasAvatarChanges = avatarUrl !== undefined;
 
-  const disabled = isPending || (textFieldsUnchanged && !hasAvatarChanges);
+  const disabled = isPending || textFieldsUnchanged;
 
   return (
     <div className={styles.bottom}>

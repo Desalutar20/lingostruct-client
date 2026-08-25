@@ -27,4 +27,10 @@ export const ROUTES = {
       path: "workspaces",
     },
   },
+  admin: {
+    users: {
+      href: "/admin/users",
+      path: "admin/users",
+    },
+  },
 } as const;

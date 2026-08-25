@@ -1,9 +1,15 @@
 import ky from "ky";
 import { config } from "@/config";
+import type { Nullable } from "@/core/types/common.types";
 
 export type ApiSuccessResponse<T> = {
   status: "success";
   data: T;
+};
+
+export type CursorPaginatedResponse<T> = ApiSuccessResponse<T[]> & {
+  prevCursor: Nullable<string>;
+  nextCursor: Nullable<string>;
 };
 
 export type ApiErrorResponse<ErrorKeys extends string[] = string[]> =

@@ -14,7 +14,9 @@ export const SignInForm = ({ redirectPath }: Props) => {
   const { form, isPending } = useSignIn({
     onSuccess({ data }) {
       router.navigate({
-        to: redirectPath ?? (data.role === "admin" ? "/admin" : ROUTES.workspaces.root.href),
+        to:
+          redirectPath ??
+          (data.role === "admin" ? ROUTES.admin.users.href : ROUTES.workspaces.root.href),
       });
     },
   });

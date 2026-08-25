@@ -8,11 +8,11 @@ export const getMe = async () =>
 
 export const updateProfile = async (data: UpdateProfileInput) =>
   await http
-    .patch<ApiSuccessResponse<Pick<User, "avatarUrl">>>(API_ENDPOINTS.users.updateProfile, {
+    .patch<ApiSuccessResponse<string>>(API_ENDPOINTS.users.updateProfile, {
       json: {
         firstName: data.firstName?.length === 0 ? null : data.firstName,
         lastName: data.lastName?.length === 0 ? null : data.lastName,
-        avatarId: data.avatarId,
+        avatarUrl: data.avatarUrl,
       },
     })
     .json();

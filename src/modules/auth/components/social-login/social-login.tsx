@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import styles from "./styles.module.css";
 import { config } from "@/config";
-import { AppButton } from "@/core/components/app-button/app-button";
 
 const providers = [
   {

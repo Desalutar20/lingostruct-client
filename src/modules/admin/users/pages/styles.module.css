@@ -1,0 +1,62 @@
+.container {
+  display: grid;
+  grid-template-rows: 7dvh minmax(0, 80dvh) 5dvh;
+  gap: 15px;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.title {
+  margin: 0;
+
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 600;
+
+  color: var(--gray-900);
+}
+
+.description {
+  margin: 6px 0 0;
+
+  color: var(--gray-500);
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.content {
+  min-height: 0;
+  overflow: auto;
+}
+
+.loader {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 255 255 / 60%);
+  backdrop-filter: blur(2px);
+}
+
+.opacity {
+  opacity: 0.7;
+}

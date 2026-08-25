@@ -4,7 +4,10 @@ import type { GetPresignedUrlInput } from "@/modules/shared/schemas/get-presigne
 
 export const getPresignedUrl = async (data: GetPresignedUrlInput) =>
   await http
-    .get<ApiSuccessResponse<{ url: string; key: string }>>(API_ENDPOINTS.files.getPresignedUrl, {
-      searchParams: data as Record<string, string>,
-    })
+    .get<ApiSuccessResponse<{ uploadUrl: string; publicUrl: string }>>(
+      API_ENDPOINTS.files.getPresignedUrl,
+      {
+        searchParams: data as Record<string, string>,
+      },
+    )
     .json();

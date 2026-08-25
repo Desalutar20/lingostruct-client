@@ -19,7 +19,7 @@ import { toast } from "sonner";
 
 export const useUpdateProfile = (
   user: User,
-  options?: MutationOptions<ApiSuccessResponse<Pick<User, "avatarUrl">>, UpdateProfileInput>,
+  options?: MutationOptions<ApiSuccessResponse<string>, UpdateProfileInput>,
 ) => {
   const queryClient = useQueryClient();
   const router = useRouter();
@@ -48,11 +48,11 @@ export const useUpdateProfile = (
     defaultValues: {
       firstName: user.firstName ?? "",
       lastName: user.lastName ?? "",
-      avatarId: undefined,
+      avatarUrl: user.avatarUrl,
     } as UpdateProfileInput,
 
     onSubmit: async ({ value }) => {
-      if (areEqualByKeys(user, value, ["firstName", "lastName"]) && value.avatarId === undefined)
+      if (areEqualByKeys(user, value, ["firstName", "lastName"]) && value.avatarUrl === undefined)
         return;
 
       if (file) {
@@ -61,7 +61,7 @@ export const useUpdateProfile = (
           queryFn: () => getPresignedUrl({ contentType: file.type }),
         });
 
-        await fetch(data.url, {
+        await fetch(data.uploadUrl, {
           method: "PUT",
           headers: {
             "Content-Type": file.type,
@@ -69,16 +69,21 @@ export const useUpdateProfile = (
           body: file,
         });
 
-        value.avatarId = data.key;
+        value.avatarUrl = data.publicUrl;
       }
 
-      const { data } = await mutateAsync(value);
+      await mutateAsync(value);
 
       cleanupFile();
-      setFilePreview(data.avatarUrl);
+      setFilePreview(value.avatarUrl ?? null);
 
       queryClient.setQueryData(USERS_QUERY_KEYS.getMe, (prev: ApiSuccessResponse<User>) => {
-        const newUser = { ...prev.data, avatarUrl: data.avatarUrl };
+        const newUser = {
+          ...prev.data,
+          firstName: value.firstName || null,
+          lastName: value.lastName || null,
+          avatarUrl: value.avatarUrl || null,
+        };
         router.update({ context: { user: newUser } });
         router.invalidate();
 
@@ -87,8 +92,6 @@ export const useUpdateProfile = (
           data: newUser,
         };
       });
-
-      form.resetField("avatarId");
     },
     validators: {
       onChange: updateProfileSchema,
@@ -121,20 +124,21 @@ export const useUpdateProfile = (
       URL.revokeObjectURL(filePreview);
     }
 
-    setFile(f);
-    setFilePreview(URL.createObjectURL(f));
+    const url = URL.createObjectURL(f);
 
-    form.setFieldValue("avatarId", crypto.randomUUID());
+    setFile(f);
+    setFilePreview(url);
+    form.setFieldValue("avatarUrl", url);
   };
 
   const removeImage = () => {
     cleanupFile();
 
     if (filePreview === user.avatarUrl) {
-      form.setFieldValue("avatarId", null);
+      form.setFieldValue("avatarUrl", null);
       setFilePreview(null);
     } else {
-      form.setFieldValue("avatarId", undefined);
+      form.setFieldValue("avatarUrl", undefined);
     }
   };
 

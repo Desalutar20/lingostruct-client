@@ -1,0 +1,33 @@
+.container {
+  min-height: 100dvh;
+  max-width: 340px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  background: var(--gray-900);
+}
+
+.content {
+  flex: 1;
+  min-height: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0 16px;
+
+  .contentContainer {
+    padding: 25px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+  }
+}
+
+.logoContainer {
+  padding: 24px 16px 0 !important;
+}
+
+.logo {
+  color: var(--neutral-white) !important;
+}
+
+.userProfile {
+  padding: 0 16px 24px;
+}
