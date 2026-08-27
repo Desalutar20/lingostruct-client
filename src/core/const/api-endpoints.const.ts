@@ -17,6 +17,8 @@ export const API_ENDPOINTS = {
   admin: {
     users: {
       getUsers: "/admin/users",
+      setUserBanStatus: (id: string) => `/admin/users/${id}/ban`,
+      deleteUser: (id: string) => `/admin/users/${id}`,
     },
   },
 } as const;

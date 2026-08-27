@@ -35,6 +35,7 @@ export const Dialog = ({
   );
 
   const nativeButton = isButtonType(triggerElement);
+  const nativeCloseButton = isButtonType(closeElement);
 
   return (
     <Dg.Root open={open} onOpenChange={setOpen}>
@@ -42,7 +43,11 @@ export const Dialog = ({
       <Dg.Portal>
         <Dg.Backdrop className={styles.backdrop} />
         <Dg.Popup className={classNames(styles.popup, className)}>
-          <Dg.Close className={styles.close} nativeButton={false} render={closeElement} />
+          <Dg.Close
+            className={styles.close}
+            nativeButton={nativeCloseButton}
+            render={closeElement}
+          />
 
           {renderContent(() => setOpen(false))}
         </Dg.Popup>

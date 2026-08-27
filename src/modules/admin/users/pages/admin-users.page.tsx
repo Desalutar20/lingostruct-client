@@ -5,12 +5,11 @@ import { UsersList } from "@/modules/admin/users/components/users-list/users-lis
 import { CursorPagination } from "@/core/components/cursor-pagination/cursor-pagination";
 import { useGetUsers } from "@/modules/admin/users/hooks/use-get-users";
 import { AdminFilters } from "@/modules/admin/components/admin-filters/admin-filters";
-import { useFilters } from "@/modules/admin/hooks/use-filters";
-import { getUsersSchema } from "@/modules/admin/users/schemas/get-users.schema";
 import { GET_USERS_MAX_LIMIT } from "@/modules/admin/users/const/admin-users-schemas.const";
 import { createLimitOptions } from "@/modules/admin/helpers/create-limit-options";
 import { Spinner } from "@/core/components/spinner/spinner";
 import { Breadcrumb } from "@/core/components/breadcrumb/breadcrumb";
+import { useUserFilters } from "@/modules/admin/users/context/user-filters.context";
 
 type Props = {
   className?: string;
@@ -18,8 +17,7 @@ type Props = {
 
 export const AdminUsersPage = ({ className }: Props) => {
   const user = useGetUser();
-  const { filters, lazyFilters, setFilter, applyFilters, resetFilters } =
-    useFilters(getUsersSchema);
+  const { filters, lazyFilters, setFilter, applyFilters, resetFilters } = useUserFilters();
   const { data, isPending, isFetching } = useGetUsers(filters, { enabled: user !== null });
 
   if (!user) return null;

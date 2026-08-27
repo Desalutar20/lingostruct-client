@@ -68,4 +68,8 @@
   .desktop {
     display: none;
   }
+
+  .page {
+    padding-top: 70px;
+  }
 }
