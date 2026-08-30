@@ -47,6 +47,7 @@ export const useFilters = <T extends ZodType>(schema: T) => {
   const resetFilters = () => {
     setLazyFilters({});
     setFilters({});
+    navigate({ to: ".", search: {} });
   };
 
   const setFilter = <K extends keyof z.output<T>>(key: K, value: z.output<T>[K]) => {
@@ -95,6 +96,11 @@ export const useFilters = <T extends ZodType>(schema: T) => {
     filters,
     lazyFilters,
     setFilter,
+    setFilters(f: Filters) {
+      setFilters(f);
+      setLazyFilters(f);
+      navigate({ to: ".", search: f });
+    },
     applyFilters,
     resetFilters,
   };

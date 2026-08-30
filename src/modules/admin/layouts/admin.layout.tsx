@@ -3,20 +3,22 @@ import styles from "./styles.module.css";
 import { useGetUser } from "@/modules/shared/hooks/use-get-user";
 import { Link, Outlet } from "@tanstack/react-router";
 import { ROUTES } from "@/core/const/routes.const";
-import type { ReactNode } from "react";
-import { Menu, Users } from "lucide-react";
+import { Building2, Menu, Users } from "lucide-react";
 import { Drawer } from "@/core/components/drawer/drawer";
 import { AppButton } from "@/core/components/app-button/app-button";
 
-type AdminRoute = (typeof ROUTES.admin)[keyof typeof ROUTES.admin];
-
-const links: { to: AdminRoute["href"]; label: string; icon: ReactNode }[] = [
+const links = [
   {
     to: ROUTES.admin.users.href,
     label: "Users",
     icon: <Users />,
   },
-];
+  {
+    to: ROUTES.admin.workspaces.root.href,
+    label: "Workspaces",
+    icon: <Building2 />,
+  },
+] as const;
 
 export const AdminLayout = () => {
   const user = useGetUser();
@@ -31,7 +33,7 @@ export const AdminLayout = () => {
           {links.map(({ to, label, icon }) => (
             <Link
               activeProps={{ className: styles.activeLink }}
-              activeOptions={{ exact: true, includeSearch: false }}
+              activeOptions={{ exact: false, includeSearch: false }}
               className={styles.link}
               to={to}
               key={to}

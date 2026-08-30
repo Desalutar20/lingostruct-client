@@ -1,7 +1,7 @@
 import { MutationCache, partialMatchKey, QueryCache, QueryClient } from "@tanstack/react-query";
 import { isApiError, type ApiErrorResponse } from "@/core/lib/api.ts";
 import { isHTTPError } from "ky";
-import { USERS_QUERY_KEYS } from "@/modules/users/const/users-query-keys.const";
+import { USER_QUERY_KEYS } from "@/modules/users/const/user-query-keys.const";
 import { toast } from "sonner";
 
 export const handleApiError = (error: unknown, disabled?: (err: ApiErrorResponse) => boolean) => {
@@ -25,7 +25,7 @@ export const queryClient = new QueryClient({
         isHTTPError(err) &&
         isApiError(err.data) &&
         err.data.code === "INVALID_CREDENTIALS" &&
-        partialMatchKey(query.queryKey, USERS_QUERY_KEYS.getMe)
+        partialMatchKey(query.queryKey, USER_QUERY_KEYS.getMe)
       )
         return;
 

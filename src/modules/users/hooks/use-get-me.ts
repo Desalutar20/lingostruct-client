@@ -2,7 +2,7 @@ import type { ApiSuccessResponse } from "@/core/lib/api";
 import type { User } from "@/core/types/api/shared/user.type";
 import type { QueryOptions } from "@/core/types/tanstack.types";
 import { getMe } from "@/modules/users/api/users.api";
-import { USERS_QUERY_KEYS } from "@/modules/users/const/users-query-keys.const";
+import { USER_QUERY_KEYS } from "@/modules/users/const/user-query-keys.const";
 import { useQuery } from "@tanstack/react-query";
 
 export const useGetMe = (
@@ -10,7 +10,7 @@ export const useGetMe = (
 ) => {
   return useQuery({
     ...options,
-    queryKey: USERS_QUERY_KEYS.getMe,
+    queryKey: USER_QUERY_KEYS.getMe,
     queryFn: () => getMe(),
     select: (data) => data.data,
     retry: false,

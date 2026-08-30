@@ -65,7 +65,7 @@ export const UserActions = ({ userId, isBanned, className }: Props) => {
             disabled={isPending}
             onContinue={async () => {
               await setBanStatus({
-                userId,
+                id: userId,
                 isBanned: !isBanned,
               });
             }}
@@ -98,7 +98,7 @@ export const UserActions = ({ userId, isBanned, className }: Props) => {
             }
             disabled={isPending}
             onContinue={async () => {
-              await deleteUser({ userId });
+              await deleteUser({ id: userId });
             }}
           />
         </div>

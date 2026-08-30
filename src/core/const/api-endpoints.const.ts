@@ -20,5 +20,11 @@ export const API_ENDPOINTS = {
       setUserBanStatus: (id: string) => `/admin/users/${id}/ban`,
       deleteUser: (id: string) => `/admin/users/${id}`,
     },
+    workspaces: {
+      createWorkspace: "/admin/workspaces",
+      getWorkspaces: "/admin/workspaces",
+      updateWorkspace: (id: string) => `/admin/workspaces/${id}`,
+      deleteWorkspace: (id: string) => `/admin/workspaces/${id}`,
+    },
   },
 } as const;

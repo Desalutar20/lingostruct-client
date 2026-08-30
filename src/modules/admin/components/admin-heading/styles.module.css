@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.title {
+  margin: 0;
+
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 600;
+
+  color: var(--gray-900);
+}
+
+.description {
+  margin: 6px 0 0;
+
+  color: var(--gray-500);
+  font-size: 14px;
+  line-height: 150%;
+}

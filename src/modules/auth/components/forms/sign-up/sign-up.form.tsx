@@ -2,6 +2,13 @@ import styles from "./styles.module.css";
 import { useSignUp } from "@/modules/auth/hooks/use-sign-up";
 import { AuthNavigation } from "@/modules/auth/components/auth-navigation/auth-navigation";
 import { SocialLogin } from "@/modules/auth/components/social-login/social-login";
+import {
+  EMAIL_MAX_LENGTH,
+  FIRST_NAME_MAX_LENGTH,
+  LAST_NAME_MAX_LENGTH,
+  PASSWORD_MAX_LENGTH,
+  PASSWORD_MIN_LENGTH,
+} from "@/modules/auth/const/auth-schemas.const";
 
 export const SignUpForm = () => {
   const { form, isPending } = useSignUp();
@@ -24,7 +31,13 @@ export const SignUpForm = () => {
           <form.AppField
             name="email"
             children={(field) => (
-              <field.FormInput type="email" placeholder="Enter email" label="Email" required />
+              <field.FormInput
+                type="email"
+                placeholder="Enter email"
+                label="Email"
+                required
+                maxLength={EMAIL_MAX_LENGTH}
+              />
             )}
           />
 
@@ -36,6 +49,8 @@ export const SignUpForm = () => {
                 placeholder="Enter password"
                 label="Password"
                 required
+                minLength={PASSWORD_MIN_LENGTH}
+                maxLength={PASSWORD_MAX_LENGTH}
               />
             )}
           />
@@ -43,7 +58,13 @@ export const SignUpForm = () => {
           <form.AppField
             name="firstName"
             children={(field) => (
-              <field.FormInput type="text" placeholder="Enter name" label="Name" required />
+              <field.FormInput
+                type="text"
+                placeholder="Enter name"
+                label="Name"
+                required
+                maxLength={FIRST_NAME_MAX_LENGTH}
+              />
             )}
           />
 
@@ -55,6 +76,7 @@ export const SignUpForm = () => {
                 placeholder="Enter last name"
                 label="Last Name"
                 required
+                maxLength={LAST_NAME_MAX_LENGTH}
               />
             )}
           />

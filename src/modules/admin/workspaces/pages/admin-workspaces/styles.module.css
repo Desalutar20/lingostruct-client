@@ -1,0 +1,32 @@
+.container {
+  display: grid;
+  grid-template-rows: 10dvh minmax(0, 75dvh) 5dvh;
+  gap: 15px;
+}
+
+.top {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.content {
+  min-height: 0;
+  overflow: auto;
+}
+
+.loader {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 255 255 / 60%);
+  backdrop-filter: blur(2px);
+}
+
+.opacity {
+  opacity: 0.7;
+}

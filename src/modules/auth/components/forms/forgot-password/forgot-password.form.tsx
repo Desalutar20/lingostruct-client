@@ -4,6 +4,7 @@ import { BackToLogin } from "@/modules/auth/components/back-to-login/back-to-log
 import { useForgotPassword } from "@/modules/auth/hooks/use-forgot-password";
 import { MailCheckIcon } from "lucide-react";
 import { useState } from "react";
+import { EMAIL_MAX_LENGTH } from "@/modules/auth/const/auth-schemas.const";
 
 export const ForgotPasswordForm = () => {
   const [isFirstRequest, setIsFirstRequest] = useState(false);
@@ -40,7 +41,13 @@ export const ForgotPasswordForm = () => {
               <form.AppField
                 name="email"
                 children={(field) => (
-                  <field.FormInput type="email" placeholder="Enter email" label="Email" required />
+                  <field.FormInput
+                    type="email"
+                    placeholder="Enter email"
+                    label="Email"
+                    required
+                    maxLength={EMAIL_MAX_LENGTH}
+                  />
                 )}
               />
             </div>

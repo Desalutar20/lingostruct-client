@@ -6,7 +6,7 @@ import type { MutationOptions } from "@/core/types/tanstack.types";
 import { getPresignedUrl } from "@/modules/shared/api/shared.api";
 import { QUERY_KEYS } from "@/modules/shared/const/query-keys.const";
 import { updateProfile } from "@/modules/users/api/users.api";
-import { USERS_QUERY_KEYS } from "@/modules/users/const/users-query-keys.const";
+import { USER_QUERY_KEYS } from "@/modules/users/const/user-query-keys.const";
 import { avatarSchema } from "@/modules/users/schemas/avatar.schema";
 import {
   updateProfileSchema,
@@ -77,7 +77,7 @@ export const useUpdateProfile = (
       cleanupFile();
       setFilePreview(value.avatarUrl ?? null);
 
-      queryClient.setQueryData(USERS_QUERY_KEYS.getMe, (prev: ApiSuccessResponse<User>) => {
+      queryClient.setQueryData(USER_QUERY_KEYS.getMe, (prev: ApiSuccessResponse<User>) => {
         const newUser = {
           ...prev.data,
           firstName: value.firstName || null,

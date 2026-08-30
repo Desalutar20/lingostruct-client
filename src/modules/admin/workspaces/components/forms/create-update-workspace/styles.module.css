@@ -1,0 +1,70 @@
+.form {
+  width: 100%;
+  min-width: 330px;
+  max-width: 728px;
+}
+
+.form fieldset {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 20px 24px;
+
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.name {
+  grid-column: 1 / -1;
+}
+
+.country {
+  grid-column: span 5;
+}
+
+.city {
+  grid-column: span 5;
+}
+
+.street {
+  grid-column: span 4;
+}
+
+.streetNumber {
+  grid-column: span 2;
+}
+
+.postalCode {
+  grid-column: span 4;
+}
+
+.button {
+  grid-column: 1 / -1;
+  width: auto;
+  justify-self: end;
+}
+
+@media screen and (max-width: 1200px) {
+  .streetNumber {
+    grid-column: span 3;
+  }
+
+  .postalCode {
+    grid-column: span 3;
+  }
+}
+@media screen and (max-width: 900px) {
+  .form fieldset {
+    grid-template-columns: 1fr;
+  }
+
+  .name,
+  .country,
+  .city,
+  .street,
+  .streetNumber,
+  .postalCode {
+    grid-column: auto !important;
+  }
+}

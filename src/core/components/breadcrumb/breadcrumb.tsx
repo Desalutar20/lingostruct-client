@@ -4,11 +4,13 @@ import type { ReactNode } from "react";
 
 import styles from "./styles.module.css";
 
+export type BreadcrumbItem = {
+  label: ReactNode;
+  to?: string;
+};
+
 type Props = {
-  items: {
-    label: ReactNode;
-    to?: string;
-  }[];
+  items: BreadcrumbItem[];
   className?: string;
 };
 

@@ -52,7 +52,7 @@ export const AdminFilters = <T extends Record<string, unknown>>({
           <Filter size={20} />
         </AppButton>
       }
-      renderContent={() => (
+      renderContent={(close) => (
         <div className={classNames(styles.container, className)}>
           {types.map(
             ({ key, label, placeholder, value, onValueChange, parse, format, ...rest }) => (
@@ -81,14 +81,20 @@ export const AdminFilters = <T extends Record<string, unknown>>({
 
           <div className={styles.buttons}>
             <AppButton
-              onClick={resetFilters}
+              onClick={() => {
+                resetFilters();
+                close();
+              }}
               disabled={disabled || Object.keys(filters).length <= 0}
               variant="secondary"
             >
               Reset
             </AppButton>
             <AppButton
-              onClick={applyFilters}
+              onClick={() => {
+                applyFilters();
+                close();
+              }}
               disabled={disabled || areEqualByKeys(filters, lazyFilters, Object.keys(lazyFilters))}
             >
               Apply

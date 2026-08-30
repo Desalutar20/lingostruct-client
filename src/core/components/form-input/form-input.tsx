@@ -22,7 +22,7 @@ export const FormInput = ({ label, className, ...rest }: Props) => {
             ? "error"
             : "success"
       }
-      className={classNames(styles.input, className)}
+      className={styles.input}
       value={rest.value ?? field.state.value}
       onChange={(e) => field.handleChange(e.target.value)}
     />
@@ -36,7 +36,7 @@ export const FormInput = ({ label, className, ...rest }: Props) => {
 
   if (label)
     return (
-      <label className={styles.label}>
+      <label className={classNames(styles.label, className)}>
         <span>
           {label}
           {rest.required ? "*" : ""}
@@ -47,7 +47,7 @@ export const FormInput = ({ label, className, ...rest }: Props) => {
     );
 
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, className)}>
       {input}
       {errors}
     </div>

@@ -2,7 +2,7 @@ import type { ApiSuccessResponse, CursorPaginatedResponse } from "@/core/lib/api
 import type { AdminUser } from "@/core/types/api/admin/admin-user.type";
 import type { MutationOptions } from "@/core/types/tanstack.types";
 import { setUserBanStatus } from "@/modules/admin/users/api/admin-users.api";
-import { ADMIN_USERS_QUERY_KEYS } from "@/modules/admin/users/const/admin-users-query-keys.const";
+import { ADMIN_USER_QUERY_KEYS } from "@/modules/admin/users/const/admin-user-query-keys.const";
 import { useUserFilters } from "@/modules/admin/users/context/user-filters.context";
 import type { SetUserBanStatusInput } from "@/modules/admin/users/schemas/set-user-ban-status.schema";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -14,7 +14,7 @@ export const useSetUserBanStatus = (
   const queryClient = useQueryClient();
   const { filters } = useUserFilters();
 
-  const queryKey = ADMIN_USERS_QUERY_KEYS.getUsers(filters);
+  const queryKey = ADMIN_USER_QUERY_KEYS.getUsers(filters);
 
   return useMutation({
     ...options,
@@ -27,7 +27,7 @@ export const useSetUserBanStatus = (
       queryClient.setQueryData(queryKey, (old: CursorPaginatedResponse<AdminUser>) => ({
         ...old,
         data: old.data.map((user) =>
-          user.id === data.userId ? { ...user, isBanned: !user.isBanned } : user,
+          user.id === data.id ? { ...user, isBanned: !user.isBanned } : user,
         ),
       }));
 

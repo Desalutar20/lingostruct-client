@@ -1,6 +1,6 @@
 import type { User } from "@/core/types/api/shared/user.type";
 import type { Nullable } from "@/core/types/common.types";
-import { adminIndexRoute, adminRoute } from "@/modules/admin/admin.routes";
+import { adminIndexRoute, adminLayout } from "@/modules/admin/admin.routes";
 import {
   authRoute,
   forgotPasswordRoute,
@@ -12,8 +12,19 @@ import {
 import { protectedLayout } from "@/modules/shared/layouts/protected.layout";
 import { workspacesRoute } from "../../modules/workspaces/workspaces.routes";
 import { createRootRouteWithContext, createRouter } from "@tanstack/react-router";
-import { adminUsersRoute } from "@/modules/admin/users/admin-users.routes";
+import { getAdminUsersRoute } from "@/modules/admin/users/admin-user.routes";
 import { ErrorBoundary } from "@/core/components/error-boundary/error-boundary";
+import {
+  getAdminWorkspaceRoute,
+  getAdminWorkspacesRoute,
+} from "@/modules/admin/workspaces/admin-workspace.routes";
+import type { AdminWorkspace } from "@/core/types/api/admin/admin-workspace.type";
+
+declare module "@tanstack/react-router" {
+  interface HistoryState {
+    workspace?: AdminWorkspace;
+  }
+}
 
 export const rootRoute = createRootRouteWithContext<{
   user: Nullable<User>;
@@ -28,7 +39,12 @@ const routeTree = rootRoute.addChildren([
     resetPasswordRoute,
   ]),
   protectedLayout.addChildren([
-    adminRoute.addChildren([adminIndexRoute, adminUsersRoute]),
+    adminLayout.addChildren([
+      adminIndexRoute,
+      getAdminUsersRoute,
+      getAdminWorkspacesRoute,
+      getAdminWorkspaceRoute,
+    ]),
     workspacesRoute,
   ]),
 ]);

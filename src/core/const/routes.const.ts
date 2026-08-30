@@ -32,5 +32,15 @@ export const ROUTES = {
       href: "/admin/users",
       path: "admin/users",
     },
+    workspaces: {
+      root: {
+        href: "/admin/workspaces",
+        path: "admin/workspaces",
+      },
+      specificWorkspace: {
+        href: (id: string) => `admin/workspaces/${id}`,
+        path: `admin/workspaces/$id`,
+      },
+    },
   },
 } as const;

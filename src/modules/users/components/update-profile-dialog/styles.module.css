@@ -25,3 +25,43 @@
     color: var(--gray-400);
   }
 }
+
+.passwordContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+
+    span {
+      font-weight: 600;
+      line-height: 150%;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 143%;
+      color: var(--gray-400);
+    }
+  }
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+
+  button {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+  }
+
+  span {
+    font-size: 14px;
+    color: var(--brand-colors-blue-100);
+  }
+}

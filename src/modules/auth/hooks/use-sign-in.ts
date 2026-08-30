@@ -4,7 +4,7 @@ import type { User } from "@/core/types/api/shared/user.type";
 import type { MutationOptions } from "@/core/types/tanstack.types";
 import { signIn } from "@/modules/auth/api/auth.api";
 import { type SignInInput, signInSchema } from "@/modules/auth/schemas/sign-in.schema";
-import { USERS_QUERY_KEYS } from "@/modules/users/const/users-query-keys.const";
+import { USER_QUERY_KEYS } from "@/modules/users/const/user-query-keys.const";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 
@@ -16,7 +16,7 @@ export const useSignIn = (options?: MutationOptions<ApiSuccessResponse<User>, Si
     ...options,
     mutationFn: (data: SignInInput) => signIn(data),
     onSuccess: async (data, params, result, ctx) => {
-      queryClient.setQueryData(USERS_QUERY_KEYS.getMe, data);
+      queryClient.setQueryData(USER_QUERY_KEYS.getMe, data);
       options?.onSuccess?.(data, params, result, ctx);
 
       router.update({ context: { user: data.data } });

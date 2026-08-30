@@ -13,14 +13,12 @@ export const getUsers = async (params?: GetUsersInput) =>
     })
     .json();
 
-export const setUserBanStatus = async ({ userId, ...data }: SetUserBanStatusInput) =>
+export const setUserBanStatus = async ({ id, ...data }: SetUserBanStatusInput) =>
   await http
-    .patch<ApiSuccessResponse<string>>(API_ENDPOINTS.admin.users.setUserBanStatus(userId), {
+    .patch<ApiSuccessResponse<string>>(API_ENDPOINTS.admin.users.setUserBanStatus(id), {
       json: data,
     })
     .json();
 
-export const deleteUser = async ({ userId }: UserIdInput) =>
-  await http
-    .delete<ApiSuccessResponse<string>>(API_ENDPOINTS.admin.users.deleteUser(userId))
-    .json();
+export const deleteUser = async ({ id }: UserIdInput) =>
+  await http.delete<ApiSuccessResponse<string>>(API_ENDPOINTS.admin.users.deleteUser(id)).json();
